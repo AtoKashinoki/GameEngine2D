@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=75.1.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "GameEngine2D"
+version = "0.0.0"
+description = "This module contain many processes for creating games."
+
+readme = "README.md"
+license = {file="LICENSE"}
+
+requires-python = ">=3.12"
+dependencies = [
+]
+
+authors = [
+   {name="AtoKashinoki", email="atokashinoki@gmail.com"}
+]
+classifiers = [
+   "Programming Language :: Python :: 3.12",
+   "License :: OSI Approved :: MIT license",
+   "Operating System :: Microsoft :: Windows :: Windows 11"
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/AtoKashinoki/GameEngine2D"
+"Bug Tracker" = "https://github.com/AtoKashinoki/GameEngine2D/issues"
+
+
+[project.scripts]
