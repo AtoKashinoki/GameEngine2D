@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "GameEngine2D"
+name = "AppEngine"
 version = "0.0.0"
-description = "This module contain many processes for creating games."
+description = "This module contain many processes for creating apps."
 
 readme = "README.md"
 license = {file="LICENSE"}
@@ -27,8 +27,8 @@ classifiers = [
 
 
 [project.urls]
-"Homepage" = "https://github.com/AtoKashinoki/GameEngine2D"
-"Bug Tracker" = "https://github.com/AtoKashinoki/GameEngine2D/issues"
+"Homepage" = "https://github.com/AtoKashinoki/AppEngine"
+"Bug Tracker" = "https://github.com/AtoKashinoki/AppEngine/issues"
 
 
 [project.scripts]

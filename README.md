@@ -1,5 +1,5 @@
-# GameEngine2D
-This module contain many processes for creating games.
+# AppEngine2D
+This module contain many processes for creating apps.
 
 ## Overview
 
@@ -9,7 +9,8 @@ This module contain many processes for creating games.
 - [ ] \_\_init__.py
   - [ ] import process
 - [ ] Engine.py
-  - [ ] 2D class
+  - [ ] AppEngine Skeleton class
+  - [ ] FlameEngine class
 - [ ] InputSystem.py
   - [ ] Console class
 - [ ] OutputSystem.py
