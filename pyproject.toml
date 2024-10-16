@@ -13,6 +13,7 @@ license = {file="LICENSE"}
 
 requires-python = ">=3.12"
 dependencies = [
+   "CodingTools2@git+https://github.com/AtoKashinoki/CodingTools2"
 ]
 
 authors = [
