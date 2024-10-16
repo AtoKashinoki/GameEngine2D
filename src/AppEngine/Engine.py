@@ -22,6 +22,7 @@ from CodingTools2.Inheritance import (
     InheritanceSkeleton,
     DataClass,
 )
+from . import InputSystem
 
 
 """ AppEngine Skeleton """
@@ -34,6 +35,10 @@ class AppEngineSkeleton(InheritanceSkeleton):
 
 """ FlameEngine """
 
+class Test:
+    def __init__(self, _render): ...
+    def __call__(self, *args, **kwargs): ...
+
 
 class FlameEngine(AppEngineSkeleton):
     """ FlameEngine inheritance class """
@@ -44,23 +49,34 @@ class FlameEngine(AppEngineSkeleton):
     # instants
     class __System(DataClass):
         fps: int
-        input_
-        render
+        input_ = InputSystem.Msvcrt
+        render = Test
         ...
 
+    class __FlameValues(DataClass):
+        frame_count: int
+        pressed: tuple
+        ...
+
+    __system: __System = None
+    __frame: __FlameValues = None
 
     """ properties """
     @property
-    def system(self) -> type[__System]: return self.__System
+    def system(self) -> __System | None: return self.__system
+
+    @property
+    def frame(self) -> __FlameValues | None: return self.__frame
 
     """ processes """
     def __init__(self, _fps: int=10):
         """ Initialize engine settings """
-        self.__System.fps = _fps
+        self.__system = self.__System()
+        self.__system.fps = _fps
         return
 
     @abstractmethod
-    def __update__(self) -> None:
+    def __update__(self) -> None | int:
         """ flame update function """
         return
 
@@ -69,17 +85,21 @@ class FlameEngine(AppEngineSkeleton):
         """ flame render function """
         return
 
-    def __loop_process(self) -> None:
+    def __loop_process(self) -> int:
         """ flame loop process function """
 
         """ initialize """
-        _fps: int = self.__System.fps
-        _ofs: float = 1/_fps
-        _input = self.__System.input_()
-        _render = self.__System.reder(self.__render__)
-        _frame_count: int = 0
+        self.__frame = self.__FlameValues()
+        self.__frame.frame_count = 0
+
+        _fps = self.__system.fps
+        _ofs = 1/_fps
+        _input = self.__system.input_()
+        _render = self.__system.render(self.__render__)
 
         _pre_flame: float = time()
+
+        _system_key = None
 
         """ run """
         done = False
@@ -91,23 +111,28 @@ class FlameEngine(AppEngineSkeleton):
             # create flame
             _now: float = time()
             if _now - _pre_flame < _ofs: continue
+            _pre_flame = _now
+
             """ flame processes """
+            self.__frame.pressed = _input.pressed
 
             # update
-            self.__update__()
+            _system_key = self.__update__()
 
             # rendering
             _render()
 
-            # count
-            _frame_count += 1
+            # flame end processes
+            _input.__flame_end__()
+            self.__frame.frame_count += 1
+            if _system_key is not None: done = True
             ...
 
         """ shutdown """
 
-        return
+        return _system_key
 
     def exe(self) -> int:
         """ Run application """
-        return 0
+        return self.__loop_process()
     ...

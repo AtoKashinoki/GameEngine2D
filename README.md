@@ -9,10 +9,10 @@ This module contain many processes for creating apps.
 - [ ] \_\_init__.py
   - [ ] import process
 - [ ] Engine.py
-  - [ ] AppEngine Skeleton class
+  - [x] AppEngine Skeleton class
   - [ ] FlameEngine class
-- [ ] InputSystem.py
-  - [ ] Console class
+- [x] InputSystem.py
+  - [x] Msvcrt class
 - [ ] OutputSystem.py
   - [ ] Console class
 - [ ] Object.py
