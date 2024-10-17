@@ -1,5 +1,4 @@
 
-
 from CodingTools2.Definitions import System
 from AppEngine.Engine import FlameEngine
 
@@ -12,7 +11,8 @@ class Test(FlameEngine):
         if 32 in self.frame.pressed and 114 in self.frame.pressed:
             return System.REBOOT
         return
-    def __render__(self) -> None:
+
+    def __render__(self, render: FlameEngine.Render) -> any:
         print(self.frame.pressed)
         return
 

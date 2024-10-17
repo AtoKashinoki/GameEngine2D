@@ -23,6 +23,7 @@ from CodingTools2.Inheritance import (
     DataClass,
 )
 from . import InputSystem
+from . import RenderSystem
 
 
 """ AppEngine Skeleton """
@@ -35,22 +36,21 @@ class AppEngineSkeleton(InheritanceSkeleton):
 
 """ FlameEngine """
 
-class Test:
-    def __init__(self, _render): ...
-    def __call__(self, *args, **kwargs): ...
-
 
 class FlameEngine(AppEngineSkeleton):
     """ FlameEngine inheritance class """
 
     """ values """
     # constants
+    Render: type = RenderSystem.RenderSystemSkeleton
 
     # instants
     class __System(DataClass):
         fps: int
-        input_ = InputSystem.Msvcrt
-        render = Test
+        input_: InputSystem.InputSystemSkeleton = \
+            InputSystem.Msvcrt
+        render: RenderSystem.RenderSystemSkeleton = \
+            RenderSystem.ConsoleRender
         ...
 
     class __FlameValues(DataClass):
@@ -81,7 +81,7 @@ class FlameEngine(AppEngineSkeleton):
         return
 
     @abstractmethod
-    def __render__(self) -> None:
+    def __render__(self, render_system) -> any:
         """ flame render function """
         return
 
