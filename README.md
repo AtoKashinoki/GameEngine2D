@@ -6,8 +6,8 @@ This module contain many processes for creating apps.
 ## Using
 
 ## Developing
-- [ ] \_\_init__.py
-  - [ ] import process
+- [x] \_\_init__.py
+  - [x] import process
 - [x] Engine.py
   - [x] AppEngine Skeleton class
   - [x] FlameEngine class
