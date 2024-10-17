@@ -13,7 +13,7 @@ This module contain many processes for creating apps.
   - [ ] FlameEngine class
 - [x] InputSystem.py
   - [x] Msvcrt class
-- [ ] OutputSystem.py
+- [ ] RenderSystem.py
   - [ ] Console class
 - [ ] Object.py
   - [ ] Skeleton class
