@@ -1,15 +1,16 @@
 
-from CodingTools2.Definitions import System
+from CodingTools2.Definitions import Msvcrt, System
 from AppEngine.Engine import FlameEngine
-
+Key = Msvcrt.Key
 
 class Test(FlameEngine):
 
     def __update__(self) -> None | int:
-        if 32 in self.frame.pressed and 101 in self.frame.pressed:
-            return System.EXIT
-        if 32 in self.frame.pressed and 114 in self.frame.pressed:
-            return System.REBOOT
+        if self.check_pressed(Key.Space):
+            if self.check_pressed(Key.e):
+                return System.EXIT
+            if self.check_pressed(Key.r):
+                return System.REBOOT
         return
 
     def __render__(self, render: FlameEngine.Render) -> any:

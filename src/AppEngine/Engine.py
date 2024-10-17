@@ -85,6 +85,10 @@ class FlameEngine(AppEngineSkeleton):
         """ flame render function """
         return
 
+    def check_pressed(self, _key_id: int) -> bool:
+        """ Check and return to pressed keys """
+        return _key_id in self.frame.pressed
+
     def __loop_process(self) -> int:
         """ flame loop process function """
 
