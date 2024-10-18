@@ -1,7 +1,7 @@
 """
     AppEngine.Object
 
-This file contain object classes for developing games.
+This file contain object classes for developing apps.
 """
 
 
@@ -28,7 +28,7 @@ class ObjectSkeleton(InheritanceSkeleton):
 
     """ values """
     # texture
-    __TEXTURE: any
+    __TEXTURE: any = "None"
 
     @property
     def texture(self) -> any: return self.__TEXTURE
@@ -38,5 +38,8 @@ class ObjectSkeleton(InheritanceSkeleton):
         """ set texture """
         cls.__TEXTURE = texture
         return
+
+    def __repr__(self):
+        return self.__TEXTURE
 
     ...

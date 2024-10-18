@@ -1,7 +1,7 @@
 """
     AppEngine.Engine
 
-This file contain inheritance classes for developing games.
+This file contain inheritance classes for developing apps.
 """
 
 
@@ -69,8 +69,10 @@ class FlameEngine(AppEngineSkeleton):
     def frame(self) -> __FlameValues | None: return self.__frame
 
     """ processes """
-    def __init__(self, _fps: int=10):
+    def __init__(self, textures, _fps: int=10):
         """ Initialize engine settings """
+        from .Texture import bind_textures
+        bind_textures(textures(self))
         self.__system = self.__System()
         self.__system.fps = _fps
         return

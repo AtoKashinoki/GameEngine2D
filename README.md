@@ -15,8 +15,9 @@ This module contain many processes for creating apps.
   - [x] Msvcrt class
 - [x] RenderSystem.py
   - [x] Console class
-- [ ] Texture.py
-  - [ ] TexturePack
+- [x] Texture.py
+  - [x] TexturePack
+  - [ ] bind_texture function
 - [x] Object.py
   - [x] Skeleton class
 - [ ] Type.py
