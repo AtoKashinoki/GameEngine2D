@@ -39,6 +39,7 @@ class ObjectSkeleton(InheritanceSkeleton):
         cls.__TEXTURE = texture
         return
 
+    @abstractmethod
     def __repr__(self):
         return self.__TEXTURE
 
