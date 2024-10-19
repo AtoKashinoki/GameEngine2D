@@ -39,3 +39,19 @@ except ImportError as error:
     RenderSystem = ImportError(error)
     ...
 
+
+try:
+    from . import Object
+    ...
+except ImportError as error:
+    Object = ImportError(error)
+    ...
+
+
+try:
+    from . import Texture
+    ...
+except ImportError as error:
+    Texture = ImportError(error)
+    ...
+
