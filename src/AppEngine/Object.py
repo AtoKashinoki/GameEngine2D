@@ -28,7 +28,7 @@ class ObjectSkeleton(InheritanceSkeleton):
 
     """ values """
     # texture
-    __TEXTURE: any = "None"
+    __TEXTURE: any = None
 
     @property
     def texture(self) -> any: return self.__TEXTURE
@@ -40,7 +40,6 @@ class ObjectSkeleton(InheritanceSkeleton):
         return
 
     @abstractmethod
-    def __repr__(self):
-        return self.__TEXTURE
+    def __repr__(self): ...
 
     ...
