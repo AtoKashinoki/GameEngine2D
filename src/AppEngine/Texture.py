@@ -47,7 +47,7 @@ class TextureSkeleton(InheritanceSkeleton):
         self.__textures = {
             key: \
                 value if isinstance(value, str) else
-                value()
+                value(self)
             for key, value in self.textures.items()
         }
         return
