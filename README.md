@@ -17,7 +17,7 @@ This module contain many processes for creating apps.
   - [x] Console class
 - [x] Texture.py
   - [x] TexturePack
-  - [ ] bind_texture function
+  - [x] bind_texture function
 - [x] Object.py
   - [x] Skeleton class
 - [ ] Type.py

@@ -33,15 +33,16 @@ class TextureSkeleton(InheritanceSkeleton):
     textures: dict[type[ObjectSkeleton], any]
 
     # instance
-    __app: AppEngineSkeleton
+    __app: ObjectSkeleton | AppEngineSkeleton
     __textures: dict[type[ObjectSkeleton], str | tuple | list | dict | set]
 
     """ properties """
     @property
-    def app(self) -> AppEngineSkeleton: return self.__app
+    def app(self) -> ObjectSkeleton | AppEngineSkeleton:
+        return self.__app
 
     """ processes """
-    def __init__(self, app: AppEngineSkeleton):
+    def __init__(self, app: ObjectSkeleton | AppEngineSkeleton):
         """ Initialize texture """
         self.__app = app
         self.__textures = {
