@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
 from abc import abstractmethod
 from CodingTools2.Inheritance import InheritanceSkeleton
+from .Engine import AppEngineSkeleton
 from .Object import ObjectSkeleton
 
 
@@ -32,15 +33,16 @@ class TextureSkeleton(InheritanceSkeleton):
     textures: dict[type[ObjectSkeleton], any]
 
     # instance
-    __app: ObjectSkeleton
+    __app: ObjectSkeleton | AppEngineSkeleton
     __textures: dict[type[ObjectSkeleton], str | tuple | list | dict | set]
 
     """ properties """
     @property
-    def app(self) -> ObjectSkeleton: return self.__app
+    def app(self) -> ObjectSkeleton | AppEngineSkeleton:
+        return self.__app
 
     """ processes """
-    def __init__(self, app: ObjectSkeleton):
+    def __init__(self, app: ObjectSkeleton | AppEngineSkeleton):
         """ Initialize texture """
         self.__app = app
         self.__textures = {
