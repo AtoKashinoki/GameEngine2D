@@ -22,6 +22,7 @@ from CodingTools2.Inheritance import (
     InheritanceSkeleton,
     DataClass,
 )
+from CodingTools2.Errors import Exit
 from . import InputSystem
 from . import RenderSystem
 
@@ -55,7 +56,8 @@ class FlameEngine(AppEngineSkeleton):
 
     class __FlameValues(DataClass):
         frame_count: int
-        pressed: tuple
+        input: tuple
+        render: bool
         ...
 
     __system: __System = None
@@ -66,7 +68,13 @@ class FlameEngine(AppEngineSkeleton):
     def system(self) -> __System | None: return self.__system
 
     @property
-    def frame(self) -> __FlameValues | None: return self.__frame
+    def input(self) -> tuple: return self.__frame.input
+    @property
+    def frame_count(self) -> int: return self.__frame.frame_count
+    @property
+    def render(self) -> bool: return self.__frame.render
+    @render.setter
+    def render(self, value: bool): self.__frame.render = value
 
     """ processes """
     def __init__(self, textures, _fps: int=10):
@@ -89,7 +97,7 @@ class FlameEngine(AppEngineSkeleton):
 
     def check_pressed(self, _key_id: int) -> bool:
         """ Check and return to pressed keys """
-        return _key_id in self.frame.pressed
+        return _key_id in self.__frame.input
 
     def __loop_process(self) -> int:
         """ flame loop process function """
@@ -97,6 +105,7 @@ class FlameEngine(AppEngineSkeleton):
         """ initialize """
         self.__frame = self.__FlameValues()
         self.__frame.frame_count = 0
+        self.__frame.render = False
 
         _fps = self.__system.fps
         _ofs = 1/_fps
@@ -108,6 +117,9 @@ class FlameEngine(AppEngineSkeleton):
         _system_key = None
 
         """ run """
+        self.__frame.input = _input.input
+        _render()
+
         done = False
         while not done:
 
@@ -120,13 +132,21 @@ class FlameEngine(AppEngineSkeleton):
             _pre_flame = _now
 
             """ flame processes """
-            self.__frame.pressed = _input.pressed
+            self.__frame.input = _input.input
 
             # update
-            _system_key = self.__update__()
+            try:
+                _system_key = self.__update__()
+                ...
+            except Exit:
+                done = True
+                ...
 
             # rendering
-            _render()
+            if self.__frame.render:
+                _render()
+                self.__frame.render = False
+                ...
 
             # flame end processes
             _input.__flame_end__()

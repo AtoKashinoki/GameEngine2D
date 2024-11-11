@@ -51,21 +51,21 @@ class Msvcrt(InputSystemSkeleton):
     # constants
 
     # instances
-    __pressed: set
+    __input: set
 
     """ properties """
     @property
-    def pressed(self) -> tuple: return tuple(self.__pressed)
+    def input(self) -> tuple: return tuple(self.__input)
 
     """ processes """
     def __init__(self):
         """ Initialize values """
-        self.__pressed = set()
+        self.__input = set()
         return
 
     def check_press(self) -> None:
         if msvcrt.kbhit():
-            self.__pressed.add(ord(msvcrt.getch()))
+            self.__input.add(ord(msvcrt.getch()))
             ...
         return
 
@@ -74,7 +74,7 @@ class Msvcrt(InputSystemSkeleton):
         return
 
     def __flame_end__(self) -> None:
-        self.__pressed = set()
+        self.__input = set()
         return
 
     ...

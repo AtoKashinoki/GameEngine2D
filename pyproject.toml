@@ -5,13 +5,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "AppEngine"
-version = "1.1.3"
+version = "1.1.5"
 description = "This module contain many processes for creating apps."
 
 readme = "README.md"
 license = {file="LICENSE"}
 
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
    "CodingTools2@git+https://github.com/AtoKashinoki/CodingTools2"
 ]
@@ -20,7 +20,7 @@ authors = [
    {name="AtoKashinoki", email="atokashinoki@gmail.com"}
 ]
 classifiers = [
-   "Programming Language :: Python :: 3.12",
+   "Programming Language :: Python :: 3.10",
    "License :: OSI Approved :: MIT license",
    "Operating System :: Microsoft :: Windows :: Windows 11"
 ]
