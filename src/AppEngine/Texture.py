@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
 
 from abc import abstractmethod
+from typing import Callable
 from CodingTools2.Inheritance import InheritanceSkeleton
 from .Engine import AppEngineSkeleton
 from .Object import ObjectSkeleton
@@ -30,7 +31,7 @@ class TextureSkeleton(InheritanceSkeleton):
 
     """ values """
     # class
-    textures: dict[type[ObjectSkeleton], any]
+    textures: dict[type[ObjectSkeleton], Callable]
 
     # instance
     __app: ObjectSkeleton | AppEngineSkeleton
